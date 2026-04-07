@@ -4,11 +4,6 @@
   "compilerOptions": {
     "outDir": "${configDir}/dist",
     "rootDir": "${configDir}/src",
-    "paths": {
-      "~/*": ["${configDir}/src/*"],
-      "~test/*": ["${configDir}/test/*"],
-      "~bench/*": ["${configDir}/benchmark/*"]
-    },
     // Use incremental builds with project references.
     "incremental": true,
     "composite": true,

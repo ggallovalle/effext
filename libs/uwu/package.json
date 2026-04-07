@@ -1,10 +1,36 @@
 {
   "name": "@kbroom/effext-uwu",
+  "description": "A purrfect styling library for terminal output with Effect integration 💖",
   "version": "0.0.1",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./UwuLayer": {
+      "import": "./dist/UwuLayer.js"
+    },
+    "./UwuServices": {
+      "import": "./dist/UwuServices.js"
+    },
+    "./UwuContract": {
+      "import": {
+        "types": "./dist/UwuContract.d.ts",
+        "default": "./dist/UwuContract.js"
+      }
+    },
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
   "license": "MIT",
   "author": "Gerson Gallo <ggallovalle@gmail.com>",
-  "description": "A purrfect styling library for terminal output with Effect integration 💖",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/ggallovalle/kbroom-effext.git",
@@ -14,11 +40,8 @@
     "url": "https://github.com/ggallovalle/kbroom-effext/issues",
     "email": "ggallovalle@gmail.com"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "check": "tsc --noEmit",
+    "check": "tsgo --noEmit",
     "test": "vitest run",
     "bench": "vitest bench --run"
   },

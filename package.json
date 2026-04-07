@@ -3,15 +3,19 @@
   "type": "module",
   "packageManager": "bun@1.3.11",
   "scripts": {
+    "build": "bunup",
+    "dev": "bunup --watch",
     "lint": "bunx --bun @biomejs/biome format --write",
+    "check": "tsgo --noEmit",
     "test": "vitest run"
   },
   "workspaces": {
     "packages": [
       "apps/*",
       "libs/*",
-      "scripts/",
-      "examples/"
+      "scripts",
+      "examples",
+      "scratchpad"
     ],
     "catalog": {
       "effect": "^4.0.0-beta.36",
@@ -22,11 +26,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.9",
-    "vitest": "^4.1.0",
-    "vite": "^8.0.3",
     "@effect/language-service": "^0.81.0",
-    "typescript": "6.0.2",
     "@types/bun": "catalog:",
-    "@types/node": "catalog:"
+    "@types/node": "catalog:",
+    "@typescript/native-preview": "^7.0.0-dev.20260407.1",
+    "bunup": "^0.16.31",
+    "typescript": "6.0.2",
+    "vite": "^8.0.3",
+    "vitest": "^4.1.0"
   }
 }
