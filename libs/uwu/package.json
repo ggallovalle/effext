@@ -1,0 +1,32 @@
+{
+  "name": "@kbroom/effext-uwu",
+  "version": "0.0.1",
+  "type": "module",
+  "license": "MIT",
+  "author": "Gerson Gallo <ggallovalle@gmail.com>",
+  "description": "A purrfect styling library for terminal output with Effect integration 💖",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ggallovalle/kbroom-effext.git",
+    "directory": "libs/uwu"
+  },
+  "bugs": {
+    "url": "https://github.com/ggallovalle/kbroom-effext/issues",
+    "email": "ggallovalle@gmail.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "bench": "vitest bench --run"
+  },
+  "dependencies": {
+    "effect": "catalog:"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:"
+  }
+}

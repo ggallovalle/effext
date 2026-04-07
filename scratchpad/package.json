@@ -1,0 +1,11 @@
+{
+  "name": "scratchpad",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "dependencies": {
+    "@effect/platform-bun": "catalog:",
+    "effect": "catalog:",
+    "@kbroom/effext-uwu": "workspace:*"
+  }
+}

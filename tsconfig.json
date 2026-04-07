@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.base.json",
+  "references": [{ "path": "tsconfig.packages.json" }],
+  "include": [
+    "**/vitest.*.ts", // All vitest config files across all packages
+    "./libs/*/test/**/*.ts",
+    "./libs/*/test/**/*.json",
+    "./libs/*/benchmark/**/*.ts"
+  ],
+  "compilerOptions": {
+    "rootDir": ".",
+    "noEmit": true,
+    "erasableSyntaxOnly": false,
+    "resolveJsonModule": true,
+    "types": ["node", "bun"],
+    "paths": {
+      // These path aliases allow us to load internal modules in tests and to use other workspace packages in tests
+      // that would otherwise be considered cyclic dependencies
+      "@kbroom/effext-uwu": ["./libs/uwu/src/index.ts"],
+      "@kbroom/effext-uwu/*": ["./libs/uwu/src/*.ts"]
+    },
+    "plugins": [
+      {
+        "name": "@effect/language-service",
+        "namespaceImportPackages": []
+      }
+    ]
+  }
+}
