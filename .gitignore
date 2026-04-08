@@ -27,3 +27,6 @@ out
 build
 .turbo
 **/*.tsbuildinfo
+
+# Auto-generated from scripts
+coverage/
