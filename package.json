@@ -7,7 +7,8 @@
     "dev": "bunup --watch",
     "lint": "bunx --bun @biomejs/biome format --write",
     "check": "tsgo --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepare": "husky"
   },
   "workspaces": {
     "packages": [
@@ -31,6 +32,7 @@
     "@types/node": "catalog:",
     "@typescript/native-preview": "^7.0.0-dev.20260407.1",
     "bunup": "^0.16.31",
+    "husky": "^9.1.7",
     "typescript": "6.0.2",
     "vite": "^8.0.3",
     "vitest": "^4.1.0"
