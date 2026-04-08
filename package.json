@@ -15,7 +15,7 @@
     "packages": [
       "apps/*",
       "libs/*",
-      "plugins/*",
+      "config/*/plugins/*",
       "scripts",
       "examples",
       "scratchpad"

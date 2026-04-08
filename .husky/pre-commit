@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
 
-bun run check
-bun run lint
-bun run test
+mask lint \
+  && mask test

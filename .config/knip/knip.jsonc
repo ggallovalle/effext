@@ -1,9 +1,16 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "tags": ["-lintignore"],
-  "ignoreFiles": ["*.config.ts", "libs/**/benchmark/*.bench.ts", ".config/**"],
-  "ignoreDependencies": ["@biomejs/.+", "@commitlint/.+"],
-  "ignoreWorkspaces": ["plugins/*", "scripts", "examples", "scratchpad"],
+  "ignoreFiles": ["libs/**/benchmark/*.bench.ts", ".config/**"],
+  "ignoreDependencies": [
+    // this is used in maskfile tasks
+    "@biomejs/.+",
+    "@commitlint/.+",
+    "bunup",
+    // unused as dev dependency in some projects, fix later
+    "@effect/platform-bun"
+  ],
+  "ignoreWorkspaces": ["scripts", "examples", "scratchpad"],
   "ignoreBinaries": ["mask"],
   "workspaces": {
     ".": {}
