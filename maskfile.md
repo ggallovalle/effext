@@ -59,3 +59,15 @@ bunx vitest bench --run
 ```bash
 bunx vitest --coverage --run
 ```
+
+## contributor
+
+> Tasks meant for contributors and aid to getting started
+
+### contributor setup
+
+> bun install, setup githooks and more thing meant to happen to work on the repo
+
+```bash
+bun install
+```

@@ -8,8 +8,7 @@
     "lint": "mask lint",
     "test": "mask test",
     "bench": "mask test bench",
-    "coverage": "mask test coverage",
-    "prepare": "husky"
+    "coverage": "mask test coverage"
   },
   "workspaces": {
     "packages": [
@@ -35,11 +34,11 @@
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
     "@typescript/native-preview": "^7.0.0-dev.20260407.1",
+    "@vitest/coverage-v8": "^4.1.0",
     "bunup": "^0.16.31",
-    "husky": "^9.1.7",
+    "lefthook": "^2.1.5",
     "typescript": "6.0.2",
     "vite": "^8.0.3",
-    "vitest": "^4.1.0",
-    "@vitest/coverage-v8": "^4.1.0"
+    "vitest": "^4.1.0"
   }
 }
