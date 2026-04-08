@@ -2,6 +2,22 @@
 
 Development tasks
 
+## build
+
+> Build the project
+
+```bash
+bunx bunup --config "${MASKFILE_DIR}/.config/bunup/bunup.config.ts"
+```
+
+## dev
+
+> Run dev server
+
+```bash
+bunx bunup --watch --config "${MASKFILE_DIR}/.config/bunup/bunup.config.ts"
+```
+
 ## lint
 
 > Run tsgo, biome and knip
