@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "tags": ["-lintignore"],
+  "ignoreFiles": ["*.config.ts", "libs/**/benchmark/*.bench.ts", ".config/**"],
+  "ignoreDependencies": ["@biomejs/.+", "@commitlint/.+"],
+  "ignoreWorkspaces": ["plugins/*", "scripts", "examples", "scratchpad"],
+  "ignoreBinaries": ["mask"],
+  "workspaces": {
+    ".": {}
+  }
+}
