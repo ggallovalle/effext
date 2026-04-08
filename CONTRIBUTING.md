@@ -7,17 +7,16 @@ This is a TypeScript monorepo template providing a flexible directory structure 
 ### Directory Structure
 
 ```
-ts-template/
+effext/
 ├── apps/         # Application projects
-├── config/       # Configuration files
+├── .config/      # Third-party tooling configuration (commitlint, knip, shell configs, etc.)
+├── config/       # Configuration for our own libraries
 ├── docs/         # Documentation
 ├── examples/     # Example code
 ├── libs/         # Shared libraries
 ├── patches/      # Patches
-├── plugins/      # Plugins
 ├── references/   # Reference materials
 ├── scripts/      # Build/run scripts
 ├── templates/    # Templates
-├── scratchpad/   # Scratch workspace
-└── xdg/          # [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir/latest/)
+└── scratchpad/   # Scratch workspace
 ```

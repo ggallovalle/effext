@@ -2,4 +2,4 @@
 
 GIT_DIR=$(git rev-parse --show-toplevel)
 
-bunx commitlint --edit $1
+mask lint commit $1

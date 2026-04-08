@@ -1,7 +1,7 @@
 import type { UserConfig } from "@commitlint/types"
 import { RuleConfigSeverity } from "@commitlint/types"
 
-import { ClickRefPlugin } from "./plugins/commitlint/ClickRefPlugin.js"
+import { ClickRefPlugin } from "./plugins/ClickRefPlugin.js"
 
 const Configuration: UserConfig = {
   extends: ["@commitlint/config-conventional"],
