@@ -8,7 +8,8 @@
     "lint": "mask lint",
     "test": "mask test",
     "bench": "mask test bench",
-    "coverage": "mask test coverage"
+    "coverage": "mask test coverage",
+    "postinstall": "mask contributor setup || echo 'Please install mask: cargo install mask'"
   },
   "workspaces": {
     "packages": [

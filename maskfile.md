@@ -66,9 +66,13 @@ bunx vitest --coverage --run
 
 ### contributor setup
 
-> bun install, setup githooks and more thing meant to happen to work on the repo
+> Setup githooks and more things meant to happen to work on the repo
 
 ```bash
-bun install
+DIM=$'\033[2m'
+RESET=$'\033[0m'
+
+echo "${DIM}# Install git hooks${RESET}"
+echo "${DIM}$ bunx lefthook install${RESET}"
 bunx lefthook install
 ```
