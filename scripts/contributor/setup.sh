@@ -35,6 +35,26 @@ effext-cs-effect-tsgo() {
     bunx effect-tsgo patch
 }
 
+effext-cs-terminal-config-tip() {
+    lib-echo-tip "Terminal config available!"
+    lib-echo-info "Source your shell config for project aliases & env vars:"
+
+    case "$SHELL" in
+        */fish)
+            lib-echo-command "source .config/fish/config.fish"
+            ;;
+        */zsh)
+            lib-echo-command "source .config/zsh/zshrc.zsh"
+            ;;
+        */bash)
+            lib-echo-command "source .config/bash/bashrc.bash"
+            ;;
+        *)
+            lib-echo-please "Check .config/*/ for your shell config"
+            ;;
+    esac
+}
+
 effext-cs-main() {
     if ! effext-cs-check-bun; then
         echo ""
@@ -44,6 +64,7 @@ effext-cs-main() {
 
     effext-cs-install-hooks
     effext-cs-effect-tsgo
+    effext-cs-terminal-config-tip
 }
 
 effext-cs-main "$@"

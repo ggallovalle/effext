@@ -40,3 +40,67 @@ effext/
 ├── templates/    # Templates
 └── scratchpad/   # Scratch workspace
 ```
+
+## Terminal Configuration
+
+This project uses a unified YAML specification to generate shell configs for all 4 supported shells (fish, bash, zsh, PowerShell).
+
+### Adding aliases or environment variables
+
+1. Edit `.config/terminal.yaml`:
+
+```yaml
+alias:
+    lint: just lint
+    test: just test
+env:
+    ROOT_DIR:
+        command: git rev-parse --show-toplevel
+```
+
+2. Run the generator:
+
+```bash
+bun run scripts/terminal-gen.ts
+```
+
+### Sourcing the generated config
+
+Run the appropriate command for your shell:
+
+#### fish
+
+```fish
+# from the root of the repo do
+source .config/fish/config.fish
+```
+
+#### bash
+
+```bash
+# from the root of the repo do
+source .config/bash/bashrc.bash
+```
+
+#### zsh
+
+```zsh
+# from the root of the repo do
+source .config/zsh/zshrc.zsh
+```
+
+#### PowerShell
+
+```powershell
+# from the root of the repo do
+Import-Module .config/powershell/profile.ps1
+```
+
+### File structure
+
+| File                         | Purpose                                            |
+| ---------------------------- | -------------------------------------------------- |
+| `.config/terminal.yaml`      | Source of truth - define aliases and env vars here |
+| `scripts/terminal-gen.ts`    | Generator script                                   |
+| `.config/*/config.fish` etc. | Shell config that sources the gen file             |
+| `.config/*/gen-*`            | Generated files (do not edit)                      |

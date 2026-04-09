@@ -1,0 +1,11 @@
+alias:
+    just: bunx just
+    vitest: bunx vitest
+    biome: bunx @biomejs/biome
+    tsgo: bunx tsgo
+    knip: bunx knip
+    bunup: bunx bunup
+env:
+    ROOT_DIR:
+        command: git rev-parse --show-toplevel
+    # SOME_ENV: SOME VALUE
