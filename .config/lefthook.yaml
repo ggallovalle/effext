@@ -1,7 +1,7 @@
 commit-msg:
     jobs:
         - name: lint commit
-          run: "mask lint commit $1"
+          run: "mask lint commit {1}"
 pre-commit:
     jobs:
         - name: lint

@@ -24,7 +24,7 @@ bunx bunup --watch --config "${MASKFILE_DIR}/.config/bunup/bunup.config.ts"
 
 ```bash
 bunx --bun @biomejs/biome check --write --unsafe \
-  && tsgo --noEmit \
+  && bunx tsgo --noEmit \
   && bunx knip --max-show-issues 5 --config "${MASKFILE_DIR}/.config/knip/knip.jsonc"
 ```
 
@@ -70,4 +70,5 @@ bunx vitest --coverage --run
 
 ```bash
 bun install
+bunx lefthook install
 ```
