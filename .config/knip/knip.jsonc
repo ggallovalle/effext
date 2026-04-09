@@ -3,9 +3,11 @@
   "tags": ["-lintignore"],
   "ignoreFiles": ["libs/**/benchmark/*.bench.ts", ".config/**"],
   "ignoreDependencies": [
+    // used in justfile
     "@biomejs/.+",
     "@commitlint/.+",
     "bunup",
+    "@effect/tsgo",
     // unused as dev dependency in some projects, fix later
     "@effect/platform-bun"
   ],

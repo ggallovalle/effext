@@ -29,6 +29,12 @@ effext-cs-install-hooks() {
     bunx lefthook install
 }
 
+effext-cs-effect-tsgo() {
+    lib-echo-info "Installing effect-tsgo..."
+    lib-echo-command "bunx effect-tsgo patch"
+    bunx effect-tsgo patch
+}
+
 effext-cs-main() {
     if ! effext-cs-check-bun; then
         echo ""
@@ -37,6 +43,7 @@ effext-cs-main() {
     fi
 
     effext-cs-install-hooks
+    effext-cs-effect-tsgo
 }
 
 effext-cs-main "$@"

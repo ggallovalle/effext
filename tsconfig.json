@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json.schemastore.org/tsconfig",
+  "$schema": "https://raw.githubusercontent.com/Effect-TS/tsgo/refs/heads/main/schema.json",
   "extends": "./tsconfig.base.json",
   "references": [{ "path": "tsconfig.packages.json" }],
   "include": [
@@ -23,7 +23,23 @@
     "plugins": [
       {
         "name": "@effect/language-service",
-        "namespaceImportPackages": []
+        "namespaceImportPackages": [],
+        "diagnosticSeverity": {
+          "extendsNativeError": "warning",
+          "globalConsole": "warning",
+          "globalConsoleInEffect": "warning",
+          "globalDate": "warning",
+          "globalDateInEffect": "warning",
+          "globalFetch": "warning",
+          "globalFetchInEffect": "warning",
+          "globalRandom": "warning",
+          "globalRandomInEffect": "warning",
+          "globalTimers": "warning",
+          "globalTimersInEffect": "warning",
+          "instanceOfSchema": "warning",
+          "nodeBuiltinImport": "warning",
+          "preferSchemaOverJson": "warning"
+        }
       }
     ]
   }

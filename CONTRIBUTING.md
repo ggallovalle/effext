@@ -18,6 +18,7 @@ This script will:
 
 1. Check that bun is installed and at the expected version
 2. Install git hooks via lefthook
+3. Setup effect-tsgo for typescript with effect diagnostic
 
 ## Architecture
 
