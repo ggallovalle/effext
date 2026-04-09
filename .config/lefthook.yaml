@@ -13,6 +13,8 @@ pre-commit:
 #
 #   Refer for explanation to following link:
 #   https://lefthook.dev/configuration/
+#   https://lefthook.dev/examples/commitlint/
+#   https://lefthook.dev/configuration/Hook/
 #
 # pre-push:
 #   jobs:
