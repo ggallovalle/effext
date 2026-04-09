@@ -23,18 +23,6 @@ effext-cs-check-bun() {
     fi
 }
 
-# Reference: https://github.com/jacobdeichert/mask/issues/147
-# when that is implemented mask can be a simple dev dependency inn package.json
-effext-cs-check-mask() {
-    lib-echo-info "Checking mask installation..."
-    if ! command -v mask &> /dev/null; then
-        lib-echo-warn "mask is not installed"
-        lib-echo-please "Install: cargo install mask"
-    else
-        lib-echo-ok "mask is installed"
-    fi
-}
-
 effext-cs-install-hooks() {
     lib-echo-info "Installing git hooks..."
     lib-echo-command "bunx lefthook install"
@@ -47,8 +35,6 @@ effext-cs-main() {
         lib-echo-please "install bun first, then run this script again."
         exit 1
     fi
-
-    effext-cs-check-mask
 
     effext-cs-install-hooks
 }

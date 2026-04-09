@@ -1,13 +1,13 @@
 commit-msg:
     jobs:
         - name: lint commit
-          run: "mask lint commit {1}"
+          run: "just lint-commit {1}"
 pre-commit:
     jobs:
         - name: lint
-          run: mask lint
+          run: just lint
         - name: test
-          run: mask test
+          run: just test
 
 # EXAMPLE USAGE:
 #

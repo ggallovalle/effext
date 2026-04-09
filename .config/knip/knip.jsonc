@@ -3,7 +3,6 @@
   "tags": ["-lintignore"],
   "ignoreFiles": ["libs/**/benchmark/*.bench.ts", ".config/**"],
   "ignoreDependencies": [
-    // this is used in maskfile tasks
     "@biomejs/.+",
     "@commitlint/.+",
     "bunup",
@@ -11,7 +10,6 @@
     "@effect/platform-bun"
   ],
   "ignoreWorkspaces": ["scripts", "examples", "scratchpad"],
-  "ignoreBinaries": ["mask"],
   "workspaces": {
     ".": {}
   }
