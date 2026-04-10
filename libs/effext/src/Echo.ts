@@ -1,6 +1,6 @@
 import { Context, type Effect, Schema, type Stream } from "effect"
 import type { RootContent as MarkdownContent } from "mdast"
-import type { LabeledSpan, SpanContents } from "./Diagnostic.js"
+import type { Diagnostic, LabeledSpan, SpanContents } from "./Diagnostic.js"
 
 const ThemeTypeId = "~@kbroom/effext/Echo/Theme"
 
@@ -40,6 +40,7 @@ export type DataFormat = "json" | "yaml" | "jsonl"
 export interface Theme {
   /** The preferred theme for code syntax highlighting. */
   readonly codeTheme: CodeTheme
+
   /** The color depth supported by the terminal. */
   readonly colorDepth: ColorDepth
 
@@ -48,9 +49,6 @@ export interface Theme {
 
   /** Whether the output is connected to a TTY. */
   readonly isTTY: boolean
-
-  /** Whether to apply syntax highlighting to code blocks. */
-  readonly syntaxHighlighting: boolean
 
   /** Whether colors should be used in output. */
   readonly useColors: boolean
@@ -88,7 +86,7 @@ export interface Echo {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { Echo } from "@kbroom/effext"
+   * import { Echo } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const echo = yield* Echo
@@ -106,7 +104,7 @@ export interface Echo {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { Echo } from "@kbroom/effext"
+   * import { Echo } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const echo = yield* Echo
@@ -124,7 +122,7 @@ export interface Echo {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { Echo } from "@kbroom/effext"
+   * import { Echo } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const echo = yield* Echo
@@ -140,7 +138,7 @@ export interface Echo {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { Echo } from "@kbroom/effext"
+   * import { Echo } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const echo = yield* Echo
@@ -156,7 +154,7 @@ export interface Echo {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { Echo } from "@kbroom/effext"
+   * import { Echo } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const echo = yield* Echo
@@ -173,7 +171,7 @@ export interface Echo {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { Echo } from "@kbroom/effext"
+   * import { Echo } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const echo = yield* Echo
@@ -190,7 +188,7 @@ export interface Echo {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { Echo } from "@kbroom/effext"
+   * import { Echo } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const echo = yield* Echo
@@ -240,7 +238,7 @@ export interface EchoVisual {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { EchoVisual } from "@kbroom/effext"
+   * import { EchoVisual } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const visual = yield* EchoVisual
@@ -260,7 +258,8 @@ export interface EchoVisual {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { EchoVisual, SpanContents, LabeledSpan } from "@kbroom/effext"
+   * import { EchoVisual } from "@kbroom/effext/Echo"
+   * import { SpanContents, LabeledSpan } from "@kbroom/effext/Diagnostic"
    *
    * const program = Effect.gen(function*() {
    *   const visual = yield* EchoVisual
@@ -274,6 +273,35 @@ export interface EchoVisual {
   code(contents: SpanContents, labels?: LabeledSpan[]): Effect.Effect<void>
 
   /**
+   * Outputs a diagnostic with all its metadata to the user.
+   *
+   * Renders a complete Diagnostic including severity, code, help text,
+   * labels, and related diagnostics.
+   *
+   * @example
+   * ```ts
+   * import { Effect } from "effect"
+   * import { EchoVisual } from "@kbroom/effext/Echo"
+   * import { Diagnostic, LabeledSpan, StringSourceCode } from "@kbroom/effext/Diagnostic"
+   *
+   * const program = Effect.gen(function*() {
+   *   const visual = yield* EchoVisual
+   *   const diagnostic = new Diagnostic({
+   *     message: "Type 'number' is not assignable to type 'string'",
+   *     code: "E0600",
+   *     severity: "Error",
+   *     labels: [
+   *       new LabeledSpan({ label: "Type mismatch", primary: true, offset: 12, length: 1 })
+   *     ],
+   *     sourceCode: new StringSourceCode("const x: string = 1"),
+   *   })
+   *   yield* visual.diagnostic(diagnostic)
+   * })
+   * ```
+   */
+  diagnostic(diag: Diagnostic): Effect.Effect<void>
+
+  /**
    * Outputs markdown content rendered for terminal display.
    *
    * Accepts mdast (Markdown Abstract Syntax Tree) nodes. Supports headers,
@@ -282,7 +310,7 @@ export interface EchoVisual {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { EchoVisual } from "@kbroom/effext"
+   * import { EchoVisual } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const visual = yield* EchoVisual
@@ -305,7 +333,7 @@ export interface EchoVisual {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { EchoVisual } from "@kbroom/effext"
+   * import { EchoVisual } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const visual = yield* EchoVisual
@@ -391,7 +419,7 @@ export interface EchoData {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { EchoData } from "@kbroom/effext"
+   * import { EchoData } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const data = yield* EchoData
@@ -409,7 +437,7 @@ export interface EchoData {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { EchoData } from "@kbroom/effext"
+   * import { EchoData } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const data = yield* EchoData
@@ -430,7 +458,7 @@ export interface EchoData {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { EchoData } from "@kbroom/effext"
+   * import { EchoData } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const data = yield* EchoData
@@ -449,7 +477,7 @@ export interface EchoData {
    * @example
    * ```ts
    * import { Effect } from "effect"
-   * import { EchoData } from "@kbroom/effext"
+   * import { EchoData } from "@kbroom/effext/Echo"
    *
    * const program = Effect.gen(function*() {
    *   const data = yield* EchoData
