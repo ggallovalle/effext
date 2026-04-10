@@ -10,6 +10,18 @@ export default defineWorkspace(
       name: "effext",
       root: "libs/effext",
     },
+    {
+      name: "effext-platform-node-shared",
+      root: "libs/effext-platform-node-shared",
+    },
+    {
+      name: "effext-platform-node",
+      root: "libs/effext-platform-node",
+    },
+    {
+      name: "effext-platform-bun",
+      root: "libs/effext-platform-bun",
+    },
   ],
   {
     entry: ["src/*.ts", "!src/internal/**/*.ts"],

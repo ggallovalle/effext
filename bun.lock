@@ -44,6 +44,33 @@
         "@types/node": "catalog:",
       },
     },
+    "libs/effext-platform-bun": {
+      "name": "@kbroom/effext-platform-bun",
+      "version": "0.0.1",
+      "dependencies": {
+        "@kbroom/effext-platform-node-shared": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/bun": "catalog:",
+      },
+    },
+    "libs/effext-platform-node": {
+      "name": "@kbroom/effext-platform-node",
+      "version": "0.0.1",
+      "dependencies": {
+        "@kbroom/effext-platform-node-shared": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/node": "catalog:",
+      },
+    },
+    "libs/effext-platform-node-shared": {
+      "name": "@kbroom/effext-platform-node-shared",
+      "version": "0.0.1",
+      "devDependencies": {
+        "@types/node": "catalog:",
+      },
+    },
     "scratchpad": {
       "name": "scratchpad",
       "version": "0.0.0",
@@ -175,6 +202,12 @@
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
     "@kbroom/effext": ["@kbroom/effext@workspace:libs/effext"],
+
+    "@kbroom/effext-platform-bun": ["@kbroom/effext-platform-bun@workspace:libs/effext-platform-bun"],
+
+    "@kbroom/effext-platform-node": ["@kbroom/effext-platform-node@workspace:libs/effext-platform-node"],
+
+    "@kbroom/effext-platform-node-shared": ["@kbroom/effext-platform-node-shared@workspace:libs/effext-platform-node-shared"],
 
     "@msgpackr-extract/msgpackr-extract-darwin-arm64": ["@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3", "", { "os": "darwin", "cpu": "arm64" }, "sha512-QZHtlVgbAdy2zAqNA9Gu1UpIuI8Xvsd1v8ic6B2pZmeFnFcMWiPLfWXh7TVw4eGEZ/C9TH281KwhVoeQUKbyjw=="],
 

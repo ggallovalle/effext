@@ -30,3 +30,6 @@ build
 
 # Auto-generated from scripts
 coverage/
+
+# where you clone repos for references
+references/
