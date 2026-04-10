@@ -1,7 +1,7 @@
-import { Context, type Effect, Schema } from "effect"
+import { Context, type Effect, Schema, type Stream } from "effect"
 import type { RootContent as MarkdownContent } from "mdast"
 
-const TerminalFeaturesTypeId = "~@kbroom/effext/Echo/TerminalFeatures"
+const ThemeTypeId = "~@kbroom/effext/Echo/Theme"
 
 /**
  * @category models
@@ -11,23 +11,60 @@ export const ColorDepth = Schema.Literals([1, 4, 8, 24])
 export type ColorDepth = Schema.Schema.Type<typeof ColorDepth>
 
 /**
+ * The preferred theme for code syntax highlighting.
+ *
+ * @since 2.0.0
  * @category models
- * @since 0.0.1
  */
-export interface ColorSupport {
+export type CodeTheme = "dark" | "light" | "auto"
+
+/**
+ * The preferred format for data output.
+ *
+ * @since 2.0.0
+ * @category models
+ */
+export type DataFormat = "json" | "yaml" | "jsonl"
+
+/**
+ * Represents user theme preferences for terminal output.
+ *
+ * Contains display preferences for colors, code rendering, and data output format.
+ * Implementation-specific defaults - users can override via CLI flags, config,
+ * or environment variables.
+ *
+ * @since 2.0.0
+ * @category models
+ */
+export interface Theme {
+  /** The preferred theme for code syntax highlighting. */
+  readonly codeTheme: CodeTheme
+  /** The color depth supported by the terminal. */
   readonly colorDepth: ColorDepth
+
+  /** The preferred format for data output. */
+  readonly dataFormat: DataFormat
+
+  /** Whether the output is connected to a TTY. */
   readonly isTTY: boolean
+
+  /** Whether to show line numbers in code blocks. */
+  readonly lineNumbers: boolean
+
+  /** Whether to apply syntax highlighting to code blocks. */
+  readonly syntaxHighlighting: boolean
+
+  /** Whether colors should be used in output. */
   readonly useColors: boolean
-  readonly [TerminalFeaturesTypeId]: typeof TerminalFeaturesTypeId
+
+  readonly [ThemeTypeId]: typeof ThemeTypeId
 }
 
 /**
- * @category models
- * @since 0.0.1
+ * @category services
+ * @since 2.0.0
  */
-export const ColorSupport = Context.Service<ColorSupport>(
-  "@kbroom/effext/Echo/TerminalFeatures",
-)
+export const Theme = Context.Service<Theme>("@kbroom/effext/Echo/Theme")
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Echo - Simple user-facing messages
@@ -343,7 +380,7 @@ export interface EchoData {
    * })
    * ```
    */
-  data(data: Json): Effect.Effect<void>
+  data(data: Schema.Json | Stream.Stream<Schema.Json>): Effect.Effect<void>
 
   /**
    * Outputs data as JSON.
@@ -361,7 +398,7 @@ export interface EchoData {
    * })
    * ```
    */
-  json(data: Json): Effect.Effect<void>
+  json(data: Schema.Json): Effect.Effect<void>
 
   /**
    * Outputs data as JSON Lines (newline-delimited JSON).
@@ -383,7 +420,7 @@ export interface EchoData {
    * })
    * ```
    */
-  jsonl(data: Json | Effect.Effect<Json>): Effect.Effect<void>
+  jsonl(data: Schema.Json | Stream.Stream<Schema.Json>): Effect.Effect<void>
 
   /**
    * Outputs data as YAML.
@@ -401,33 +438,5 @@ export interface EchoData {
    * })
    * ```
    */
-  yaml(data: Json): Effect.Effect<void>
+  yaml(data: Schema.Json): Effect.Effect<void>
 }
-
-/**
- * @category services
- * @since 2.0.0
- */
-export const EchoData = Context.Service<EchoData>("@kbroom/effext/EchoData")
-
-/**
- * JSON value type from Effect Schema.
- *
- * @since 2.0.0
- * @category models
- */
-export type Json = null | boolean | number | string | JsonArray | JsonObject
-
-/**
- * @since 2.0.0
- * @category models
- */
-export interface JsonObject {
-  readonly [key: string]: Json
-}
-
-/**
- * @since 2.0.0
- * @category models
- */
-export interface JsonArray extends ReadonlyArray<Json> {}
