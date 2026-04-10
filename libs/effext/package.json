@@ -1,6 +1,6 @@
 {
-  "name": "@kbroom/effext-uwu",
-  "description": "A purrfect styling library for terminal output with Effect integration 💖",
+  "name": "@kbroom/effext",
+  "description": "Extensions for Effect — exploring what belongs in the standard library",
   "version": "0.0.1",
   "type": "module",
   "files": [
@@ -9,16 +9,10 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    "./UwuLayer": {
-      "import": "./dist/UwuLayer.js"
-    },
-    "./UwuServices": {
-      "import": "./dist/UwuServices.js"
-    },
-    "./UwuContract": {
+    "./Uwu": {
       "import": {
-        "types": "./dist/UwuContract.d.ts",
-        "default": "./dist/UwuContract.js"
+        "types": "./dist/Uwu.d.ts",
+        "default": "./dist/Uwu.js"
       }
     },
     ".": {
@@ -34,7 +28,7 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/ggallovalle/kbroom-effext.git",
-    "directory": "libs/uwu"
+    "directory": "libs/effext"
   },
   "bugs": {
     "url": "https://github.com/ggallovalle/kbroom-effext/issues",

@@ -26,12 +26,12 @@
       "version": "0.0.0",
       "dependencies": {
         "@effect/platform-bun": "catalog:",
-        "@kbroom/effext-uwu": "workspace:*",
+        "@kbroom/effext": "workspace:*",
         "effect": "catalog:",
       },
     },
-    "libs/uwu": {
-      "name": "@kbroom/effext-uwu",
+    "libs/effext": {
+      "name": "@kbroom/effext",
       "version": "0.0.1",
       "dependencies": {
         "effect": "catalog:",
@@ -47,7 +47,7 @@
       "version": "0.0.0",
       "dependencies": {
         "@effect/platform-bun": "catalog:",
-        "@kbroom/effext-uwu": "workspace:*",
+        "@kbroom/effext": "workspace:*",
         "effect": "catalog:",
       },
     },
@@ -56,7 +56,7 @@
       "version": "0.0.0",
       "dependencies": {
         "@effect/platform-bun": "catalog:",
-        "@kbroom/effext-uwu": "workspace:*",
+        "@kbroom/effext": "workspace:*",
         "effect": "catalog:",
       },
     },
@@ -172,7 +172,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@kbroom/effext-uwu": ["@kbroom/effext-uwu@workspace:libs/uwu"],
+    "@kbroom/effext": ["@kbroom/effext@workspace:libs/effext"],
 
     "@msgpackr-extract/msgpackr-extract-darwin-arm64": ["@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3", "", { "os": "darwin", "cpu": "arm64" }, "sha512-QZHtlVgbAdy2zAqNA9Gu1UpIuI8Xvsd1v8ic6B2pZmeFnFcMWiPLfWXh7TVw4eGEZ/C9TH281KwhVoeQUKbyjw=="],
 

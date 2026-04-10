@@ -6,6 +6,6 @@
   "dependencies": {
     "@effect/platform-bun": "catalog:",
     "effect": "catalog:",
-    "@kbroom/effext-uwu": "workspace:*"
+    "@kbroom/effext": "workspace:*"
   }
 }
