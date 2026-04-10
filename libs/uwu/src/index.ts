@@ -1,1 +1,1 @@
-export * as UwuContract from "./UwuContract.js"
+export * as Uwu from "./Uwu.js"
