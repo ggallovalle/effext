@@ -18,8 +18,44 @@
     // see https://biomejs.dev/linter/javascript/sources
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnusedFunctionParameters": {
+          "fix": "safe",
+          "level": "warn"
+        },
+        "useImportExtensions": {
+          "level": "error",
+          "fix": "safe",
+          "options": {
+            "forceJsExtensions": true
+          }
+        },
+        "useJsonImportAttributes": "on",
+        "useUniqueElementIds": "on"
+      },
       "complexity": {
-        "useLiteralKeys": "off"
+        "useLiteralKeys": "off",
+        "noUselessCatchBinding": {
+          "fix": "none",
+          "level": "error"
+        },
+        "useSimplifiedLogicExpression": "on"
+      },
+      "suspicious": {
+        "noConsole": "info",
+        "noDebugger": "error",
+        "noEvolvingTypes": "on",
+        "useStaticResponseMethods": "on"
+      },
+      "performance": {
+        "noDelete": "on",
+        "useTopLevelRegex": "on"
+      },
+      "style": {
+        "noExportedImports": "on",
+        "noShoutyConstants": "on",
+        "noUnusedTemplateLiteral": "on",
+        "useNodeAssertStrict": "on"
       }
     }
   },
@@ -38,7 +74,8 @@
     "enabled": true,
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": "on",
+        "useSortedInterfaceMembers": "on"
       }
     }
   },

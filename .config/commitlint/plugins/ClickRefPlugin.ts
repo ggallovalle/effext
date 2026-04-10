@@ -8,21 +8,21 @@ import type { Plugin } from "@commitlint/types"
 
 export const ClickRefPlugin = {
   rules: {
-    "click-ref-exists": async (commit, when, opts) => {
+    "click-ref-exists": async (_commit, _when, _opts) => {
       // console.log("somewhere")
       // await Effect.runPromise(program)
 
-      console.log(
-        JSON.stringify(
-          {
-            commit,
-            when,
-            opts,
-          },
-          null,
-          2,
-        ),
-      )
+      // console.log(
+      //   JSON.stringify(
+      //     {
+      //       commit,
+      //       when,
+      //       opts,
+      //     },
+      //     null,
+      //     2,
+      //   ),
+      // )
       const success = true
       return [success, "The click task does not exists"]
     },
