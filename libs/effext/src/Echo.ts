@@ -1,5 +1,6 @@
 import { Context, type Effect, Schema, type Stream } from "effect"
 import type { RootContent as MarkdownContent } from "mdast"
+import type { LabeledSpan, SpanContents } from "./Diagnostic.js"
 
 const ThemeTypeId = "~@kbroom/effext/Echo/Theme"
 
@@ -47,9 +48,6 @@ export interface Theme {
 
   /** Whether the output is connected to a TTY. */
   readonly isTTY: boolean
-
-  /** Whether to show line numbers in code blocks. */
-  readonly lineNumbers: boolean
 
   /** Whether to apply syntax highlighting to code blocks. */
   readonly syntaxHighlighting: boolean
@@ -254,6 +252,28 @@ export interface EchoVisual {
   code(code: string, options?: CodeOptions): Effect.Effect<void>
 
   /**
+   * Outputs a code snippet with rich metadata and labels for annotations.
+   *
+   * Use this when you need to display code with specific line/column information
+   * and labeled spans for error annotations or highlights.
+   *
+   * @example
+   * ```ts
+   * import { Effect } from "effect"
+   * import { EchoVisual, SpanContents, LabeledSpan } from "@kbroom/effext"
+   *
+   * const program = Effect.gen(function*() {
+   *   const visual = yield* EchoVisual
+   *   const contents = SpanContents.create("const x: string = 1", { language: "typescript" })
+   *   yield* visual.code(contents, [
+   *     new LabeledSpan({ label: "Type 'number' is not assignable to type 'string'", primary: true, offset: 12, length: 1 })
+   *   ])
+   * })
+   * ```
+   */
+  code(contents: SpanContents, labels?: LabeledSpan[]): Effect.Effect<void>
+
+  /**
    * Outputs markdown content rendered for terminal display.
    *
    * Accepts mdast (Markdown Abstract Syntax Tree) nodes. Supports headers,
@@ -319,7 +339,6 @@ export const EchoVisual = Context.Service<EchoVisual>(
 export interface CodeOptions {
   readonly filename?: string
   readonly language?: string
-  readonly showLineNumbers?: boolean
 }
 
 /**
@@ -330,7 +349,7 @@ export interface CodeOptions {
  */
 export interface TreeNode {
   readonly label: string
-  readonly nodes?: readonly (TreeNode | string)[]
+  readonly nodes?: (TreeNode | string)[]
 }
 
 /**

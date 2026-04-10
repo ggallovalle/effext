@@ -74,9 +74,9 @@ import * as ConfigLayered from "@kbroom/effext/ConfigLayered";
 
 ### Diagnostics & Developer Experience
 
-| Module     | Description                                                  |
-| ---------- | ------------------------------------------------------------ |
-| **Miette** | Rich, structured error diagnostics (inspired by Rust miette) |
+| Module         | Description                                                  |
+| -------------- | ------------------------------------------------------------ |
+| **Diagnostic** | Rich, structured error diagnostics (inspired by Rust miette) |
 
 ### System
 

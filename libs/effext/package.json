@@ -9,6 +9,12 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
+    "./Diagnostic": {
+      "import": {
+        "types": "./dist/Diagnostic.d.ts",
+        "default": "./dist/Diagnostic.js"
+      }
+    },
     "./Echo": {
       "import": {
         "types": "./dist/Echo.d.ts",
