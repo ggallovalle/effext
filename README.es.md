@@ -49,16 +49,16 @@ Los siguientes módulos están planeados, pero aún no implementados:
 
 ```ts
 import {
-    Uwu,
     ConfigLayered,
     ConfigYaml,
     ConfigJsonc,
-    ConfigKdl,
-    etc,
+    I18n,
+    // y mas
 } from "@kbroom/effext";
-// o import * as Uwu from "@kbroom/effext/Uwu"
-// import * as ConfigLayered from "@kbroom/effext/ConfigLayered"
-// // etc
+// o
+import * as I18n from "@kbroom/effext/I18n";
+import * as ConfigLayered from "@kbroom/effext/ConfigLayered";
+// y mas
 ```
 
 ---
@@ -95,9 +95,9 @@ import {
 
 ### Salida de Terminal
 
-| Módulo  | Descripción                                             |
-| ------- | ------------------------------------------------------- |
-| **Uwu** | Utilidades de salida de terminal Coloridas y expresivas |
+| Módulo   | Descripción                                 |
+| -------- | ------------------------------------------- |
+| **Echo** | Utilidades de salida de terminal expresivas |
 
 ---
 

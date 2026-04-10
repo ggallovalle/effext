@@ -9,10 +9,10 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    "./Uwu": {
+    "./Echo": {
       "import": {
-        "types": "./dist/Uwu.d.ts",
-        "default": "./dist/Uwu.js"
+        "types": "./dist/Echo.d.ts",
+        "default": "./dist/Echo.js"
       }
     },
     ".": {
@@ -43,8 +43,9 @@
     "effect": "catalog:"
   },
   "devDependencies": {
+    "@effect/platform-bun": "catalog:",
     "@types/bun": "catalog:",
-    "@types/node": "catalog:",
-    "@effect/platform-bun": "catalog:"
+    "@types/mdast": "^4.0.4",
+    "@types/node": "catalog:"
   }
 }

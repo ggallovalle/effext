@@ -95,9 +95,9 @@ import * as ConfigLayered from "@kbroom/effext/ConfigLayered";
 
 ### Terminal Output
 
-| Module  | Description                                    |
-| ------- | ---------------------------------------------- |
-| **Uwu** | Colorful, expressive terminal output utilities |
+| Module   | Description                          |
+| -------- | ------------------------------------ |
+| **Echo** | Expressive terminal output utilities |
 
 ---
 
