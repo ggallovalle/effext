@@ -15,6 +15,8 @@
 [![Bun version](https://img.shields.io/badge/Bun-%E2%89%A5+1.3.0-yellow.svg)](https://bun.sh)
 [![Node version](https://img.shields.io/badge/Node-%E2%89%A522+-green.svg)](https://nodejs.org)
 
+**[English](./README.md)** | **[Español](./README.es.md)**
+
 ---
 
 ## Table of Contents
