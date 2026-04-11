@@ -45,7 +45,7 @@
     "test": "vitest run",
     "bench": "vitest bench --run"
   },
-  "dependencies": {
+  "peerDependencies": {
     "effect": "catalog:"
   },
   "devDependencies": {

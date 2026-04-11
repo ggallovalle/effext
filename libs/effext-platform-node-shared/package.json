@@ -9,6 +9,12 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
+    "./NodeEcho": {
+      "import": {
+        "types": "./dist/NodeEcho.d.ts",
+        "default": "./dist/NodeEcho.js"
+      }
+    },
     ".": {
       "import": {
         "types": "./dist/index.d.ts",
@@ -34,7 +40,12 @@
     "bench": "vitest bench --run"
   },
   "dependencies": {},
+  "peerDependencies": {
+    "effect": "catalog:",
+    "@kbroom/effext": "workspace:*"
+  },
   "devDependencies": {
+    "@kbroom/effext": "workspace:*",
     "@types/node": "catalog:"
   }
 }

@@ -149,6 +149,23 @@ export interface Echo {
   help(message: string): Effect.Effect<void>
 
   /**
+   * Outputs a clickable link for the user to interact with.
+   *
+   * @example
+   * ```ts
+   * import { Effect } from "effect"
+   * import { Echo } from "@kbroom/effext/Echo"
+   *
+   * const program = Effect.gen(function*() {
+   *   const echo = yield* Echo
+   *   yield* echo.link("Getting Started", "https://docs.example.com/getting-started")
+   *   yield* echo.link("Install Extension", "https://marketplace.visualstudio.com/")
+   * })
+   * ```
+   */
+  link(text: string, url: string): Effect.Effect<void>
+
+  /**
    * Outputs a success message to confirm an operation completed successfully.
    *
    * @example
@@ -164,23 +181,6 @@ export interface Echo {
    * ```
    */
   success(message: string): Effect.Effect<void>
-
-  /**
-   * Outputs a clickable URL link for the user to interact with.
-   *
-   * @example
-   * ```ts
-   * import { Effect } from "effect"
-   * import { Echo } from "@kbroom/effext/Echo"
-   *
-   * const program = Effect.gen(function*() {
-   *   const echo = yield* Echo
-   *   yield* echo.url("https://docs.example.com/getting-started")
-   *   yield* echo.url("Install the extension at https://marketplace.visualstudio.com/")
-   * })
-   * ```
-   */
-  url(message: string): Effect.Effect<void>
 
   /**
    * Outputs a warning message to alert the user about something that might need attention.

@@ -5,6 +5,8 @@
  * @category functions
  */
 
+export * from "./NodeEcho.js"
+
 /**
  * Greets a user with a friendly message.
  *

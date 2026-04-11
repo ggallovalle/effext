@@ -34,14 +34,13 @@
     "libs/effext": {
       "name": "@kbroom/effext",
       "version": "0.0.1",
-      "dependencies": {
-        "effect": "catalog:",
-      },
       "devDependencies": {
-        "@effect/platform-bun": "catalog:",
         "@types/bun": "catalog:",
         "@types/mdast": "^4.0.4",
         "@types/node": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
       },
     },
     "libs/effext-platform-bun": {
@@ -51,6 +50,7 @@
         "@kbroom/effext-platform-node-shared": "workspace:*",
       },
       "devDependencies": {
+        "@effect/platform-bun": "catalog:",
         "@types/bun": "catalog:",
       },
     },
@@ -68,7 +68,12 @@
       "name": "@kbroom/effext-platform-node-shared",
       "version": "0.0.1",
       "devDependencies": {
+        "@kbroom/effext": "workspace:*",
         "@types/node": "catalog:",
+      },
+      "peerDependencies": {
+        "@kbroom/effext": "workspace:*",
+        "effect": "catalog:",
       },
     },
     "scratchpad": {
