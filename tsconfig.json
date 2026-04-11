@@ -7,7 +7,8 @@
     "./libs/**/vitest.*.ts", // All vitest config files across all packages
     "./libs/*/test/**/*.ts",
     "./libs/*/test/**/*.json",
-    "./libs/*/benchmark/**/*.ts"
+    "./libs/*/benchmark/**/*.ts",
+    "./scripts/*.ts"
   ],
   "compilerOptions": {
     "rootDir": ".",

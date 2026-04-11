@@ -31,5 +31,6 @@ build
 # Auto-generated from scripts
 coverage/
 
-# where you clone repos for references
+# ai stuff
 references/
+.codex

@@ -65,6 +65,10 @@ const program = Effect.gen(function* () {
 
 ```ts
 const Status = Schema.Union([Schema.Literal("ok"), Schema.Literal("err")]);
+const EnvValueSchema = Schema.Union([
+    Schema.String,
+    Schema.Struct({ command: Schema.String }),
+]);
 
 // literals shortcut
 const Colors = Schema.Literals(["red", "green", "blue"]);

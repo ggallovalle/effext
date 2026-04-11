@@ -62,6 +62,16 @@ const outputFlag = Flag.choice("output", ["tree", "json"]).pipe(
 );
 const portFlag = Flag.integer("port");
 const configFlag = Flag.file("config", { mustExist: true }).pipe(Flag.optional);
+const shellFlag = Flag.choice("shell", [
+    "fish",
+    "bash",
+    "zsh",
+    "powershell",
+] as const).pipe(
+    Flag.withDescription("limit output to specific shell; repeatable"),
+    // variadic
+    Flag.between(0, 4),
+);
 
 const root = Command.make("myapp", {
     doctor: doctorFlag,
@@ -70,7 +80,7 @@ const root = Command.make("myapp", {
     config: configFlag,
 }).pipe(Command.withDescription("my cli"));
 
-const program = root.pipe(
+const cli = root.pipe(
     Command.withHandler(function (config) {
         return Effect.gen(function* () {
             const stdio = yield* Stdio.Stdio;
@@ -78,7 +88,6 @@ const program = root.pipe(
             yield* Console.log("output");
         });
     }),
-    Command.run({ version: "0.0.1" }),
 );
 
 const sub = Command.make("subcmd", {}).pipe(
@@ -89,7 +98,7 @@ const sub = Command.make("subcmd", {}).pipe(
     }),
 );
 
-const withSubs = root.pipe(Command.withSubcommands([sub]));
+const cliWithSub = root.pipe(Command.withSubcommands([sub]));
 ```
 
 ## When
