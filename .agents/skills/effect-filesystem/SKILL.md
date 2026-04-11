@@ -1,3 +1,8 @@
+---
+name: effect-filesystem
+description: Effect FileSystem and Path APIs. Never use node:fs, node:path, or Bun.file. Use when reading/writing files, creating directories, or manipulating paths.
+---
+
 # Filesystem
 
 ## Rule

@@ -1,3 +1,8 @@
+---
+name: effect-schema
+description: Schema.decodeUnknown, encode, transform. Use when parsing config, validating API input, or encoding/decoding data structures.
+---
+
 # Effect Schema
 
 ## Define

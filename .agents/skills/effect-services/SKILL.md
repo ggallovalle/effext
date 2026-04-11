@@ -1,4 +1,9 @@
-# Effect v4 Services
+---
+name: effect-services
+description: Context.Service, Layer for dependency injection. Use when defining services, logging, configuration, or providing implementations to Effect programs.
+---
+
+# Effect Services
 
 ## Define
 
@@ -39,17 +44,15 @@ Effect.runPromise(program.pipe(Layer.provide(liveLogger)));
 ## Example (Echo)
 
 ```ts
-// define
 export const Echo = Context.Service<Echo>("@kbroom/effext/Echo");
 
-// use
 const program = Effect.gen(function* () {
     const echo = yield* Echo;
     yield* echo.action("Run npm install");
 });
 ```
 
-## Anti-Pattern (DO NOT USE)
+## Anti-Pattern
 
 ```ts
 // WRONG - v3
@@ -59,7 +62,7 @@ yield * Effect.service(Logger);
 
 ## When
 
-Services: config, loggers, DB, HTTP. yield\* in Effect.gen.
+Services: config, loggers, DB, HTTP. yield* in Effect.gen.
 
 ## Refs
 
@@ -67,4 +70,3 @@ Services: config, loggers, DB, HTTP. yield\* in Effect.gen.
 - libs/effext/src/Diagnostic.ts
 - references/effect/packages/effect/src/Context.ts
 - references/effect/packages/effect/src/Layer.ts
-- libs/effext/src/ for usage

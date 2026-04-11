@@ -1,3 +1,8 @@
+---
+name: effect-cli
+description: Console.log, Config.env, Stdio streams, ChildProcess, Command parsing. Use when working with CLI output, environment variables, shell commands, or flag/argument parsing.
+---
+
 # Effect CLI
 
 ## Console
@@ -49,7 +54,6 @@ Effect.gen(function* () {
 import { Command, Flag } from "effect/unstable/cli";
 import { Effect, Console } from "effect";
 
-// define flags
 const doctorFlag = Flag.boolean("doctor").pipe(
     Flag.withDescription("show info"),
 );
@@ -59,7 +63,6 @@ const outputFlag = Flag.choice("output", ["tree", "json"]).pipe(
 const portFlag = Flag.integer("port");
 const configFlag = Flag.file("config", { mustExist: true }).pipe(Flag.optional);
 
-// define command
 const root = Command.make("myapp", {
     doctor: doctorFlag,
     output: outputFlag,
@@ -67,7 +70,6 @@ const root = Command.make("myapp", {
     config: configFlag,
 }).pipe(Command.withDescription("my cli"));
 
-// add handler - config object passed directly
 const program = root.pipe(
     Command.withHandler(function (config) {
         return Effect.gen(function* () {
@@ -79,7 +81,6 @@ const program = root.pipe(
     Command.run({ version: "0.0.1" }),
 );
 
-// subcommands
 const sub = Command.make("subcmd", {}).pipe(
     Command.withHandler(function () {
         return Effect.gen(function* () {

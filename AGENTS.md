@@ -38,12 +38,12 @@ ES2022, NodeNext. Strict (exactOptionalPropertyTypes).
 
 Caveman full always. `.agents/skills/caveman/SKILL.md`.
 
-## Deep Dives (READ before implementing)
+## Deep Dives (Skills)
 
-| Doc                        | When                                                                                                               |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| .agents/docs/schema.md     | Validation, config parsing, **JSON.stringify/JSON.parse replacement**                                              |
-| .agents/docs/context.md    | Defining/using services                                                                                            |
-| .agents/docs/effect.md     | Effect.gen, **NO async/await, NO promise.then**                                                                    |
-| .agents/docs/filesystem.md | **BEFORE** node:fs, node:path → use Effect FileSystem/Path                                                         |
-| .agents/docs/cli.md        | **BEFORE** node:child_process, process.env, console.log, CLI args → use Effect Console/Config/ChildProcess/Command |
+| Skill             | When                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------ |
+| effect-schema     | Validation, config parsing, **JSON.stringify/JSON.parse replacement**                                              |
+| effect-services   | Defining/using services                                                                                            |
+| effect-gen        | Effect.gen, **NO async/await, NO promise.then**                                                                    |
+| effect-filesystem | **BEFORE** node:fs, node:path → use Effect FileSystem/Path                                                         |
+| effect-cli        | **BEFORE** node:child_process, process.env, console.log, CLI args → use Effect Console/Config/ChildProcess/Command |

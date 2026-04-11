@@ -1,7 +1,9 @@
-# Effect Programs
+---
+name: effect-gen
+description: Effect.gen patterns for AI code. Never use runPromise/runSync - write programs only. Wrap external SDKs with Effect.promise/tryPromise. Use when writing Effect programs or integrating non-effect libraries.
+---
 
-NEVER use Effect.runPromise, Effect.runSync in AI code.
-AI writes Effect.gen. Human adds runPromise/runSync at entry point.
+# Effect Programs
 
 ## AI Writes Only
 
