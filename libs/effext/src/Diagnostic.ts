@@ -26,7 +26,7 @@ import {
  * const span = new SourceSpan({ offset: 5, length: 5 })
  * ```
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export class SourceSpan extends Schema.Class<SourceSpan>(
@@ -56,7 +56,7 @@ export class SourceSpan extends Schema.Class<SourceSpan>(
  * })
  * ```
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export class LabeledSpan extends Schema.Class<LabeledSpan>(
@@ -91,7 +91,7 @@ export class LabeledSpan extends Schema.Class<LabeledSpan>(
  * const text = contents.decode()
  * ```
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export class SpanContents extends Schema.Class<SpanContents>(
@@ -122,8 +122,6 @@ export class SpanContents extends Schema.Class<SpanContents>(
    *
    * const contents = SpanContents.create("const x = 1", { language: "typescript" })
    * ```
-   *
-   * @since 2.0.0
    */
   static create(content: string, options?: CreateOptions): SpanContents {
     const lines = content.split("\n")
@@ -151,7 +149,7 @@ export class SpanContents extends Schema.Class<SpanContents>(
    * const text = contents.decode()
    * ```
    *
-   * @since 2.0.0
+   * @since 0.0.1
    */
   public decode(): string {
     return new TextDecoder().decode(this.data)
@@ -161,7 +159,7 @@ export class SpanContents extends Schema.Class<SpanContents>(
 /**
  * Options for SpanContents.create()
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface CreateOptions {
@@ -176,7 +174,7 @@ export interface CreateOptions {
 /**
  * Type identifier for SourceCode interface.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category constants
  */
 export const SourceCodeTypeId = "~/@kbroom/effext/Diagnostic/SourceCode"
@@ -201,7 +199,7 @@ export const SourceCodeTypeId = "~/@kbroom/effext/Diagnostic/SourceCode"
  * )
  * ```
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface SourceCode {
@@ -228,7 +226,7 @@ export interface SourceCode {
  * @param u - The value to check
  * @returns True if the value implements SourceCode
  *
- * @since 2.0.0
+ * @since 0.0.1
  */
 export const isSourceCode = (u: unknown): u is SourceCode =>
   Predicate.hasProperty(u, SourceCodeTypeId)
@@ -236,7 +234,7 @@ export const isSourceCode = (u: unknown): u is SourceCode =>
 /**
  * Schema declaration for SourceCode.
  *
- * @since 2.0.0
+ * @since 0.0.1
  */
 export const SourceCode = Schema.declare(isSourceCode)
 
@@ -324,7 +322,7 @@ function sliceWithContext(
  * const contents = source.readSpan(new SourceSpan({ offset: 9, length: 6 }), 0, 0)
  * ```
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export class StringSourceCode implements SourceCode {
@@ -452,7 +450,7 @@ export class StringSourceCode implements SourceCode {
  * })
  * ```
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export class FromFileSourceCode implements SourceCode {
@@ -593,7 +591,7 @@ export class FromFileSourceCode implements SourceCode {
  * })
  * ```
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export class Diagnostic extends Schema.TaggedErrorClass<Diagnostic>()(

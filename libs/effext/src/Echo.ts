@@ -14,7 +14,7 @@ export type ColorDepth = Schema.Schema.Type<typeof ColorDepth>
 /**
  * The preferred theme for code syntax highlighting.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export type CodeTheme = "dark" | "light" | "auto"
@@ -22,7 +22,7 @@ export type CodeTheme = "dark" | "light" | "auto"
 /**
  * The preferred format for data output.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export type DataFormat = "json" | "yaml" | "jsonl"
@@ -34,7 +34,7 @@ export type DataFormat = "json" | "yaml" | "jsonl"
  * Implementation-specific defaults - users can override via CLI flags, config,
  * or environment variables.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface Theme {
@@ -58,7 +58,7 @@ export interface Theme {
 
 /**
  * @category services
- * @since 2.0.0
+ * @since 0.0.1
  */
 export const Theme = Context.Service<Theme>("@kbroom/effext/Echo/Theme")
 
@@ -73,7 +73,7 @@ export const Theme = Context.Service<Theme>("@kbroom/effext/Echo/Theme")
  * meaning - this is used to communicate with the user. Keep using console for
  * development and debugging, prefer this for user-facing output.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface Echo {
@@ -202,14 +202,14 @@ export interface Echo {
 
 /**
  * @category services
- * @since 2.0.0
+ * @since 0.0.1
  */
 export const Echo = Context.Service<Echo>("@kbroom/effext/Echo")
 
 /**
  * Options for the command method.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface CommandOptions {
@@ -228,7 +228,7 @@ export interface CommandOptions {
  * have more complex formatting than simple text messages. Use for code,
  * markdown, trees, and other rich visual content.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface EchoVisual {
@@ -352,7 +352,7 @@ export interface EchoVisual {
 
 /**
  * @category services
- * @since 2.0.0
+ * @since 0.0.1
  */
 export const EchoVisual = Context.Service<EchoVisual>(
   "@kbroom/effext/EchoVisual",
@@ -361,7 +361,7 @@ export const EchoVisual = Context.Service<EchoVisual>(
 /**
  * Options for the code method.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface CodeOptions {
@@ -372,7 +372,7 @@ export interface CodeOptions {
 /**
  * A node in a tree structure (archy-style).
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface TreeNode {
@@ -383,7 +383,7 @@ export interface TreeNode {
 /**
  * Options for the tree method.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface TreeOptions {
@@ -402,7 +402,7 @@ export interface TreeOptions {
  * is the preferred method for outputting data. Use explicit format methods
  * (`json`, `yaml`) when you need a specific format.
  *
- * @since 2.0.0
+ * @since 0.0.1
  * @category models
  */
 export interface EchoData {
