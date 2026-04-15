@@ -9,6 +9,12 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
+    "./Cli": {
+      "import": {
+        "types": "./dist/Cli.d.ts",
+        "default": "./dist/Cli.js"
+      }
+    },
     "./Diagnostic": {
       "import": {
         "types": "./dist/Diagnostic.d.ts",

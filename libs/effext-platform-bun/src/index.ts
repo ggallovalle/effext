@@ -5,7 +5,24 @@
  * @category functions
  */
 
-export * from "@kbroom/effext-platform-node-shared"
+export {
+  add,
+  type ColorOptions,
+  greet,
+  layerBoxed,
+  layerColored,
+  layerColoredPrefixed,
+  layerEmoji,
+  layerNoop,
+  layerPrefixed,
+  makeColored,
+  makeColoredPrefixed,
+  makeNoop,
+  makePrefixed,
+  NodeEchoLayer as BunEchoLayer,
+  NodeThemeLayer as BunThemeLayer,
+  type PrefixOptions,
+} from "@kbroom/effext-platform-node-shared"
 
 /**
  * Returns information about the Bun platform.

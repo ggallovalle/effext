@@ -1,7 +1,6 @@
 import { styleText } from "node:util"
 import {
   type ColorDepth,
-  ColorFlag,
   Echo,
   OutputFlag,
   Theme,
@@ -9,6 +8,8 @@ import {
   ThemeSchema,
 } from "@kbroom/effext/Echo"
 import { Config, Console, Effect, Layer, Option, Schema } from "effect"
+import * as Terminal from "effect/Terminal"
+import { ColorFlag } from "@kbroom/effext/Cli"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Models
@@ -351,5 +352,41 @@ export const NodeThemeLayer = Layer.effect(
 
     const plain = { codeTheme, colorDepth, dataFormat, isTTY, useColors }
     return Schema.decodeUnknownSync(ThemeSchema)(plain) as unknown as Theme
+  }),
+)
+
+/**
+ * @category layers
+ * @since 0.0.1
+ */
+export const NodeEchoLayer = Layer.effect(
+  Echo,
+  Effect.gen(function* () {
+    const theme = yield* Theme
+    const terminal = yield* Terminal.Terminal
+
+    const stdout = (s: string) => terminal.display(s).pipe(Effect.orDie)
+    const stderr = (s: string) => terminal.display(s).pipe(Effect.orDie)
+
+    if (!theme.useColors) {
+      return makePrefixed(stdout, stderr, {
+        action: "?",
+        error: "!",
+        success: "v",
+        warning: "w",
+        help: "i",
+        link: "L",
+      })
+    }
+
+    return makeColored(stdout, stderr, {
+      action: "bold",
+      command: "cyan",
+      error: "red",
+      success: "green",
+      warning: "yellow",
+      help: "dim",
+      link: "underline",
+    })
   }),
 )
