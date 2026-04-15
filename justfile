@@ -16,6 +16,13 @@ lint:
     bunx tsgo --noEmit
     bunx knip --max-show-issues 5 --config ".config/knip/knip.jsonc"
 
+# TypeScript type check only
+check:
+    cd libs/effext && bun run check
+    cd libs/effext-platform-node-shared && bun run check
+    cd libs/effext-platform-node && bun run check
+    cd libs/effext-platform-bun && bun run check
+
 # Lint a commit message file
 lint-commit file:
     bunx commitlint --edit {{ file }} --config ".config/commitlint/commitlint.config.ts"

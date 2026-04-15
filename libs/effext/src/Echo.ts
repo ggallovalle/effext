@@ -1,8 +1,9 @@
 import { Context, type Effect, Schema, type Stream } from "effect"
+import { Flag, GlobalFlag } from "effect/unstable/cli"
 import type { RootContent as MarkdownContent } from "mdast"
 import type { Diagnostic, LabeledSpan, SpanContents } from "./Diagnostic.js"
 
-const ThemeTypeId = "~@kbroom/effext/Echo/Theme"
+export const ThemeTypeId = "~@kbroom/effext/Echo/Theme"
 
 /**
  * @category models
@@ -52,15 +53,63 @@ export interface Theme {
 
   /** Whether colors should be used in output. */
   readonly useColors: boolean
-
-  readonly [ThemeTypeId]: typeof ThemeTypeId
 }
+
+/**
+ * @category schemas
+ * @since 0.0.1
+ */
+export const ThemeSchema = Schema.Struct({
+  codeTheme: Schema.Literals(["dark", "light", "auto"]),
+  colorDepth: ColorDepth,
+  dataFormat: Schema.Literals(["json", "yaml", "jsonl"]),
+  isTTY: Schema.Boolean,
+  useColors: Schema.Boolean,
+}).pipe(Schema.brand(ThemeTypeId))
 
 /**
  * @category services
  * @since 0.0.1
  */
 export const Theme = Context.Service<Theme>("@kbroom/effext/Echo/Theme")
+
+/**
+ * @category global flags
+ * @since 0.0.1
+ */
+export const ThemeFlag = GlobalFlag.setting("theme")({
+  flag: Flag.choice("theme", ["dark", "light", "auto"] as const).pipe(
+    Flag.optional,
+  ),
+})
+
+/**
+ * @category global flags
+ * @since 0.0.1
+ */
+export const ColorFlag = GlobalFlag.setting("color")({
+  flag: Flag.string("color").pipe(Flag.optional),
+})
+
+/**
+ * @category global flags
+ * @since 0.0.1
+ */
+export const OutputFlag = GlobalFlag.setting("output")({
+  flag: Flag.choice("output", ["json", "yaml", "jsonl"] as const).pipe(
+    Flag.optional,
+  ),
+})
+
+/**
+ * @category global flags
+ * @since 0.0.1
+ */
+export const ThemeFlags = {
+  theme: ThemeFlag,
+  color: ColorFlag,
+  output: OutputFlag,
+} as const
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Echo - Simple user-facing messages

@@ -1,6 +1,14 @@
 import { styleText } from "node:util"
-import { Echo } from "@kbroom/effext/Echo"
-import { Console, Effect, Layer } from "effect"
+import {
+  type ColorDepth,
+  ColorFlag,
+  Echo,
+  OutputFlag,
+  Theme,
+  ThemeFlag,
+  ThemeSchema,
+} from "@kbroom/effext/Echo"
+import { Config, Console, Effect, Layer, Option, Schema } from "effect"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Models
@@ -278,3 +286,70 @@ export const layerEmoji = (
       link: "🔗",
     }),
   )
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Theme
+// ─────────────────────────────────────────────────────────────────────────────
+
+const forceColorToDepth = (v: string | undefined): ColorDepth | undefined => {
+  if (v === undefined) return undefined
+  const n = parseInt(v, 10)
+  if (Number.isNaN(n)) return undefined
+  if (n < 0) return 1
+  if (n > 3) return 24
+  return ([1, 4, 8, 24] as const)[n]
+}
+
+/**
+ * @category layers
+ * @since 0.0.1
+ */
+export const NodeThemeLayer = Layer.effect(
+  Theme,
+  Effect.gen(function* () {
+    const stdoutIsTTY = process.stdout.isTTY === true
+    const colorFlag = yield* ColorFlag
+    const themeFlag = yield* ThemeFlag
+    const outputFlag = yield* OutputFlag
+
+    const noColorEnv = yield* Config.option(Config.string("NO_COLOR"))
+    const forceColorEnv = yield* Config.option(Config.string("FORCE_COLOR"))
+
+    const noColor = noColorEnv._tag === "Some" && noColorEnv.value === "1"
+    const forceColor = Option.getOrElse(forceColorEnv, () => undefined)
+
+    const colorDepth =
+      forceColorToDepth(forceColor) ??
+      (stdoutIsTTY ? (process.stdout.getColorDepth() as ColorDepth) : 24)
+
+    let codeTheme: Theme["codeTheme"] = Option.getOrElse(
+      themeFlag,
+      () => "auto",
+    )
+    let useColors: boolean
+
+    if (noColor) {
+      useColors = false
+    } else if (forceColor !== undefined) {
+      useColors = true
+    } else if (Option.isSome(colorFlag)) {
+      const val = colorFlag.value
+      if (val === "false" || val === undefined) {
+        useColors = false
+      } else if (val === "light") {
+        useColors = true
+        codeTheme = "light"
+      } else {
+        useColors = true
+      }
+    } else {
+      useColors = stdoutIsTTY
+    }
+
+    const dataFormat = Option.getOrElse(outputFlag, () => "json" as const)
+    const isTTY = stdoutIsTTY
+
+    const plain = { codeTheme, colorDepth, dataFormat, isTTY, useColors }
+    return Schema.decodeUnknownSync(ThemeSchema)(plain) as unknown as Theme
+  }),
+)
