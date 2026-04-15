@@ -1,4 +1,5 @@
 import { styleText } from "node:util"
+import { ColorFlag } from "@kbroom/effext/Cli"
 import {
   type ColorDepth,
   Echo,
@@ -9,7 +10,6 @@ import {
 } from "@kbroom/effext/Echo"
 import { Config, Console, Effect, Layer, Option, Schema } from "effect"
 import * as Terminal from "effect/Terminal"
-import { ColorFlag } from "@kbroom/effext/Cli"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Models
