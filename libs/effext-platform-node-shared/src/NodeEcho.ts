@@ -8,8 +8,15 @@ import {
   ThemeFlag,
   ThemeSchema,
 } from "@kbroom/effext/Echo"
-import { Config, Console, Effect, Layer, Option, Schema } from "effect"
-import * as Terminal from "effect/Terminal"
+import {
+  Config,
+  Console,
+  Effect,
+  Layer,
+  Option,
+  Schema,
+  Terminal,
+} from "effect"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Models

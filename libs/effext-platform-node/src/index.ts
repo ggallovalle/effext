@@ -1,11 +1,4 @@
-/**
- * Node.js platform utilities
- *
- * @since 0.0.1
- * @category functions
- */
-
-export * from "@kbroom/effext-platform-node-shared"
+export * as NodeEcho from "./NodeEcho.js"
 
 /**
  * Returns information about the Node.js platform.

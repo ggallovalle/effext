@@ -1,28 +1,4 @@
-/**
- * Bun platform utilities
- *
- * @since 0.0.1
- * @category functions
- */
-
-export {
-  add,
-  type ColorOptions,
-  greet,
-  layerBoxed,
-  layerColored,
-  layerColoredPrefixed,
-  layerEmoji,
-  layerNoop,
-  layerPrefixed,
-  makeColored,
-  makeColoredPrefixed,
-  makeNoop,
-  makePrefixed,
-  NodeEchoLayer as BunEchoLayer,
-  NodeThemeLayer as BunThemeLayer,
-  type PrefixOptions,
-} from "@kbroom/effext-platform-node-shared"
+export * as BunEcho from "./BunEcho.js"
 
 /**
  * Returns information about the Bun platform.
