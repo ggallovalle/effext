@@ -1,13 +1,5 @@
 import { styleText } from "node:util"
-import { ColorFlag } from "@kbroom/effext/Cli"
-import {
-  type ColorDepth,
-  Echo,
-  OutputFlag,
-  Theme,
-  ThemeFlag,
-  ThemeSchema,
-} from "@kbroom/effext/Echo"
+import { type ColorDepth, Echo, Theme, ThemeSchema } from "@kbroom/effext/Echo"
 import {
   Config,
   Console,
@@ -17,7 +9,28 @@ import {
   Schema,
   Terminal,
 } from "effect"
+import { Flag, GlobalFlag } from "effect/unstable/cli"
 
+export const ThemeFlag = GlobalFlag.setting("theme")({
+  flag: Flag.string("theme").pipe(Flag.optional),
+})
+
+export const ColorFlag = GlobalFlag.setting("color")({
+  flag: Flag.string("color").pipe(Flag.optional),
+})
+
+export const OutputFlag = GlobalFlag.setting("output")({
+  flag: Flag.string("output").pipe(Flag.optional),
+})
+
+export const ThemeFlags = {
+  theme: ThemeFlag,
+  color: ColorFlag,
+  output: OutputFlag,
+} as const
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Models
 // ─────────────────────────────────────────────────────────────────────────────
 // Models
 // ─────────────────────────────────────────────────────────────────────────────
@@ -330,9 +343,9 @@ export const NodeThemeLayer = Layer.effect(
       forceColorToDepth(forceColor) ??
       (stdoutIsTTY ? (process.stdout.getColorDepth() as ColorDepth) : 24)
 
-    let codeTheme: Theme["codeTheme"] = Option.getOrElse(
+    let codeTheme = Option.getOrElse(
       themeFlag,
-      () => "auto",
+      () => "auto" as const,
     )
     let useColors: boolean
 

@@ -8,6 +8,8 @@ pre-commit:
           run: just lint
         - name: test
           run: just test
+        - name: check
+          run: just check
 
 # EXAMPLE USAGE:
 #

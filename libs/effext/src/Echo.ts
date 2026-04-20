@@ -1,16 +1,33 @@
-import { Context, type Effect, type Schema, type Stream } from "effect"
+import { Context, type Effect, Schema, type Stream } from "effect"
 import type { RootContent as MarkdownContent } from "mdast"
 import type { Diagnostic, LabeledSpan, SpanContents } from "./Diagnostic.js"
 
-export type { CodeTheme, DataFormat, Theme } from "./Cli.js"
-export {
-  ColorDepth,
-  OutputFlag,
-  ThemeFlag,
-  ThemeFlags,
-  ThemeSchema,
-  ThemeTypeId,
-} from "./Cli.js"
+export const ThemeTypeId = "~@kbroom/effext/Echo/Theme"
+
+export const ColorDepth = Schema.Literals([1, 4, 8, 24])
+export type ColorDepth = Schema.Schema.Type<typeof ColorDepth>
+
+export type CodeTheme = string
+
+export type DataFormat = "json" | "yaml" | "jsonl"
+
+export interface Theme {
+  readonly codeTheme: CodeTheme
+  readonly colorDepth: ColorDepth
+  readonly dataFormat: DataFormat
+  readonly isTTY: boolean
+  readonly useColors: boolean
+}
+
+export const ThemeSchema = Schema.Struct({
+  codeTheme: Schema.String,
+  colorDepth: ColorDepth,
+  dataFormat: Schema.Literals(["json", "yaml", "jsonl"]),
+  isTTY: Schema.Boolean,
+  useColors: Schema.Boolean,
+}).pipe(Schema.brand(ThemeTypeId))
+
+export const Theme = Context.Service<Theme>("@kbroom/effext/Echo/Theme")
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Echo - Simple user-facing messages

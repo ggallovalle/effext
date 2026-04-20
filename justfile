@@ -13,7 +13,6 @@ dev:
 # Run tsgo, biome and knip
 lint:
     bunx --bun @biomejs/biome check --write
-    bunx tsgo --noEmit
     bunx knip --max-show-issues 5 --config ".config/knip/knip.jsonc"
 
 # TypeScript type check only
