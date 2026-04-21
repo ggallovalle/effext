@@ -15,7 +15,7 @@
     "packages": [
       "apps/*",
       "libs/*",
-      "config/*/plugins/*",
+      ".config/commitlint",
       "scripts",
       "examples",
       "scratchpad"
