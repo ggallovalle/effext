@@ -17,10 +17,7 @@ lint:
 
 # TypeScript type check only
 check:
-    cd libs/effext && bun run check
-    cd libs/effext-platform-node-shared && bun run check
-    cd libs/effext-platform-node && bun run check
-    cd libs/effext-platform-bun && bun run check
+    bun run --workspaces --parallel check
 
 # Lint a commit message file
 lint-commit file:

@@ -6,6 +6,7 @@
     "build": "just build",
     "dev": "just dev",
     "lint": "just lint",
+    "check": "just check",
     "test": "just test",
     "bench": "just test-bench",
     "coverage": "just test-coverage"
