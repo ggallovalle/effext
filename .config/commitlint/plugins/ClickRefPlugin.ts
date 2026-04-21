@@ -3,15 +3,11 @@ import { Schema } from "effect"
 
 const ClickRefExistsRule = {
   key: "click-ref-exists" as const,
-  options: (apiKey: string | undefined) =>
-    Schema.decodeSync(
-      Schema.Struct({
-        apiKey:
-          apiKey === undefined
-            ? Schema.optional(Schema.String)
-            : Schema.String,
-      }),
-    ),
+  options: Schema.decodeSync(
+    Schema.Struct({
+      apiKey: Schema.optional(Schema.String),
+    }),
+  ),
 }
 
 async function fn(
@@ -19,7 +15,7 @@ async function fn(
   _when: "always" | "never" | undefined,
   opts: { apiKey?: string } | undefined,
 ): Promise<readonly [boolean, string?]> {
-  const apiKey = opts?.apiKey
+  const { apiKey } = opts ?? {}
   if (!apiKey) {
     return [true]
   }

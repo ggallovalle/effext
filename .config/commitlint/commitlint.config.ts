@@ -13,7 +13,7 @@ const Configuration: UserConfig = {
     [Rules.clickRefExists.key]: [
       RuleConfigSeverity.Error,
       "always",
-      Rules.clickRefExists.options(apiKey),
+      Rules.clickRefExists.options({ apiKey }),
     ],
   },
 }
