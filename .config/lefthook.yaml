@@ -2,16 +2,16 @@
 commit-msg:
     jobs:
         - name: lint commit
-          run: "just lint-commit {1}"
+          run: "mise run lint-commit {1}"
 pre-commit:
     parallel: true
     jobs:
         - name: lint
-          run: just lint
+          run: mise run lint
         - name: test
-          run: just test
+          run: mise run test
         - name: check
-          run: just check
+          run: mise run check
         - name: env-scan
           run: bunx varlock scan --staged --path .config/varlock
 

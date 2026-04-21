@@ -31,7 +31,7 @@ ES2022, NodeNext. Strict (exactOptionalPropertyTypes).
 
 ## Commands
 
-- just build | test | lint | dev
+- mise run build | test | lint | dev
 - single test: bunx vitest run path/to/test.test.ts
 
 ## Comms

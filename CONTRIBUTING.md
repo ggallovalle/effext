@@ -5,13 +5,22 @@
 ### Prerequisites
 
 - [bun](https://bun.sh/docs/installation) (version 1.3.11 or higher) - all-in-one JS runtime & package manager
+- [mise](https://mise.jdx.dev/getting-started.html) - task runner
+
+### Before you start
+
+Trust the repository mise config (one-time only):
+
+```bash
+mise trust
+```
 
 ### Setup
 
 Run the contributor setup script:
 
 ```bash
-bunx just contributor-setup
+mise run contributor-setup
 ```
 
 This script will:
@@ -51,8 +60,8 @@ This project uses a unified YAML specification to generate shell configs for all
 
 ```yaml
 alias:
-    lint: just lint
-    test: just test
+    lint: mise run lint
+    test: mise run test
 env:
     ROOT_DIR:
         command: git rev-parse --show-toplevel

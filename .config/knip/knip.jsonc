@@ -3,7 +3,6 @@
   "tags": ["-lintignore"],
   "ignoreFiles": ["libs/**/benchmark/*.bench.ts", ".config/**"],
   "ignoreDependencies": [
-    // used in justfile
     "@biomejs/.+",
     "@commitlint/.+",
     "bunup",
@@ -12,6 +11,7 @@
     // unused as dev dependency in some projects, fix later
     "@effect/platform-bun"
   ],
+  "ignoreBinaries": ["mise"],
   "ignoreWorkspaces": ["scripts", "examples", "scratchpad"],
   "workspaces": {
     ".": {}

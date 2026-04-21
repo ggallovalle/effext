@@ -1,0 +1,47 @@
+[tasks.build]
+description = "Build the project"
+run = "bunx bunup --config .config/bunup/bunup.config.ts"
+
+[tasks.dev]
+description = "Run dev server"
+run = "bunx bunup --watch --config .config/bunup/bunup.config.ts"
+
+[tasks.lint]
+description = "Lint with biome and knip"
+run = """
+bunx --bun @biomejs/biome check --write
+bunx knip --max-show-issues 5 --config ".config/knip/knip.jsonc"
+"""
+
+[tasks.check]
+description = "TypeScript type check"
+run = "bun run --workspaces --parallel check"
+
+[tasks.lint-commit]
+description = "Lint a commit message file"
+usage = 'arg "<file>" help="Path to commit message file"'
+run = "bunx varlock run --path .config/varlock -- bunx commitlint --edit ${usage_file?} --config .config/commitlint/commitlint.config.ts"
+
+[tasks.test]
+description = "Run all tests"
+run = "bunx vitest run"
+
+[tasks.test-bench]
+description = "Run benchmarks"
+run = "bunx vitest bench --run"
+
+[tasks.test-coverage]
+description = "Run test coverage"
+run = "bunx vitest --coverage --run"
+
+[tasks.contributor-setup]
+description = "Setup git hooks and development environment"
+run = "bash scripts/contributor/setup.sh"
+
+[tasks.env-verify]
+description = "Verify .env files are valid"
+run = "bunx varlock load --path .config/varlock"
+
+[tasks.env-scan]
+description = "Scan for leaked secrets"
+run = "bunx varlock scan --staged --path .config/varlock"

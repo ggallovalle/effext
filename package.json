@@ -3,13 +3,13 @@
   "type": "module",
   "packageManager": "bun@1.3.11",
   "scripts": {
-    "build": "just build",
-    "dev": "just dev",
-    "lint": "just lint",
-    "check": "just check",
-    "test": "just test",
-    "bench": "just test-bench",
-    "coverage": "just test-coverage"
+    "build": "mise run build",
+    "dev": "mise run dev",
+    "lint": "mise run lint",
+    "check": "mise run check",
+    "test": "mise run test",
+    "bench": "mise run test-bench",
+    "coverage": "mise run test-coverage"
   },
   "workspaces": {
     "packages": [
@@ -40,7 +40,6 @@
     "@vitest/coverage-v8": "^4.1.0",
     "bunup": "^0.16.31",
     "lefthook": "^2.1.5",
-    "rust-just": "^1.49.0",
     "typescript": "6.0.2",
     "varlock": "^0.9.0",
     "vite": "^8.0.3",
