@@ -3,9 +3,9 @@ import type { Plugin } from "@commitlint/types"
 export const ClickRefPlugin = {
   rules: {
     "click-ref-exists": async (commit, _when, opts) => {
-      const apiKey = opts?.apiKey as string | undefined
+      const apiKey = (opts as unknown as { apiKey?: string })?.apiKey
       if (!apiKey) {
-        return [true, undefined]
+        return [true]
       }
 
       const taskId = commit.references[0]?.issue
@@ -22,7 +22,7 @@ export const ClickRefPlugin = {
         )
 
         if (response.status === 200) {
-          return [true, undefined]
+          return [true]
         } else if (response.status === 404) {
           return [false, `ClickUp task #${taskId} not found.`]
         } else {
