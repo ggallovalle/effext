@@ -18,7 +18,6 @@ lint:
 # TypeScript type check only
 check:
     bun run --workspaces --parallel check
-    bunx varlock run --path .config/varlock -- bunx commitlint --last --config ".config/commitlint/commitlint.config.ts"
 
 # Lint a commit message file
 lint-commit file:
