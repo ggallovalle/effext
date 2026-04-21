@@ -20,7 +20,7 @@ run = "bun run --workspaces --parallel check"
 [tasks.lint-commit]
 description = "Lint a commit message file"
 usage = 'arg "<file>" help="Path to commit message file"'
-run = "bunx varlock run --path .config/varlock -- bunx commitlint --edit ${usage_file?} --config .config/commitlint/commitlint.config.ts"
+run = "bunx varlock run --path config -- bunx commitlint --edit ${usage_file?} --config .config/commitlint/commitlint.config.ts"
 
 [tasks.test]
 description = "Run all tests"
@@ -40,11 +40,11 @@ run = "bash scripts/contributor/setup.sh"
 
 [tasks.env-verify]
 description = "Verify .env files are valid"
-run = "bunx varlock load --path .config/varlock"
+run = "bunx varlock load --path config"
 
 [tasks.env-scan]
 description = "Scan for leaked secrets"
-run = "bunx varlock scan --staged --path .config/varlock"
+run = "bunx varlock scan --staged --path config"
 
 [shell_alias]
 goroot = "cd {{config_root}}"

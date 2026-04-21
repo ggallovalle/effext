@@ -62,7 +62,7 @@ This is a TypeScript monorepo with a directory structure for organizing applicat
 effext/
 ├── .config/      # Third-party tooling configuration (commitlint, knip, mise, etc.)
 ├── apps/         # Application projects
-├── config/       # Configuration for our own libraries
+├── config/       # Project-specific config (varlock env schemas, etc.)
 ├── docs/         # Documentation
 ├── examples/     # Example code
 ├── libs/         # Shared libraries
