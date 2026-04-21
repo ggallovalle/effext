@@ -1,8 +1,10 @@
+# yaml-language-server: schema=https://json.schemastore.org/lefthook.json
 commit-msg:
     jobs:
         - name: lint commit
           run: "just lint-commit {1}"
 pre-commit:
+    parallel: true
     jobs:
         - name: lint
           run: just lint

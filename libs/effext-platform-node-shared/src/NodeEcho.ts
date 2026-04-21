@@ -343,10 +343,7 @@ export const NodeThemeLayer = Layer.effect(
       forceColorToDepth(forceColor) ??
       (stdoutIsTTY ? (process.stdout.getColorDepth() as ColorDepth) : 24)
 
-    let codeTheme = Option.getOrElse(
-      themeFlag,
-      () => "auto" as const,
-    )
+    let codeTheme = Option.getOrElse(themeFlag, () => "auto" as const)
     let useColors: boolean
 
     if (noColor) {
