@@ -3,7 +3,7 @@ import {
   makeColoredPrefixed,
   makeNoop,
   makePrefixed,
-} from "@kbroom/effext-platform-node-shared"
+} from "@kbroom/effext-platform-node-shared/NodeEcho"
 import { Effect } from "effect"
 import { describe, expect, it, vi } from "vitest"
 
