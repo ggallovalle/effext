@@ -23,6 +23,13 @@
         "vitest": "^4.1.0",
       },
     },
+    ".config/commitlint": {
+      "name": "@plugins/commitlint",
+      "version": "0.0.0",
+      "dependencies": {
+        "effect": "catalog:",
+      },
+    },
     "examples": {
       "name": "examples",
       "version": "0.0.0",
@@ -330,6 +337,8 @@
     "@oxc-transform/binding-win32-arm64-msvc": ["@oxc-transform/binding-win32-arm64-msvc@0.93.0", "", { "os": "win32", "cpu": "arm64" }, "sha512-RR30xNVMIEe5PWSD26uGEZp6yH7fkLKznvPSebVOVl2IWW8Sjnd59i6Ws08FmBKH9QP3jW30MypL6ESdlE5yWw=="],
 
     "@oxc-transform/binding-win32-x64-msvc": ["@oxc-transform/binding-win32-x64-msvc@0.93.0", "", { "os": "win32", "cpu": "x64" }, "sha512-6QN3DEaEw3eWioWEFRgNsTvYq8czYSnpkjB2za+/WdLN0g5FzOl2ZEfNiPrBWIPnSmjUmDWtWVWcSjwY7fX5/Q=="],
+
+    "@plugins/commitlint": ["@plugins/commitlint@workspace:.config/commitlint"],
 
     "@rolldown/binding-android-arm64": ["@rolldown/binding-android-arm64@1.0.0-rc.15", "", { "os": "android", "cpu": "arm64" }, "sha512-YYe6aWruPZDtHNpwu7+qAHEMbQ/yRl6atqb/AhznLTnD3UY99Q1jE7ihLSahNWkF4EqRPVC4SiR4O0UkLK02tA=="],
 
