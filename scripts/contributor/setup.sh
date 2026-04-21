@@ -36,21 +36,21 @@ effext-cs-effect-tsgo() {
 }
 
 effext-cs-terminal-config-tip() {
-    lib-echo-tip "Terminal config available!"
-    lib-echo-info "Source your shell config for project aliases & env vars:"
+    lib-echo-tip "Shell aliases available via mise!"
+    lib-echo-info "Add mise activation to your shell rc:"
 
     case "$SHELL" in
         */fish)
-            lib-echo-command "source .config/fish/config.fish"
+            lib-echo-command "mise activate fish | source"
             ;;
         */zsh)
-            lib-echo-command "source .config/zsh/zshrc.zsh"
+            lib-echo-command "eval \"$(mise activate zsh)\""
             ;;
         */bash)
-            lib-echo-command "source .config/bash/bashrc.bash"
+            lib-echo-command "eval \"$(mise activate bash)\""
             ;;
         *)
-            lib-echo-please "Check .config/*/ for your shell config"
+            lib-echo-please "See mise.jdx.dev for activation instructions"
             ;;
     esac
 }

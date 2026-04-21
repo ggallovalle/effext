@@ -45,3 +45,9 @@ run = "bunx varlock load --path .config/varlock"
 [tasks.env-scan]
 description = "Scan for leaked secrets"
 run = "bunx varlock scan --staged --path .config/varlock"
+
+[shell_alias]
+goroot = "cd {{config_root}}"
+goeffext = "cd {{config_root}}/libs/effext"
+goconfig = "cd {{config_root}}/.config"
+"go.config" = "cd {{config_root}}/.config"
