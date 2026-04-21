@@ -1,25 +1,9 @@
-import { execSync } from "node:child_process"
 import type { Plugin } from "@commitlint/types"
-
-const getApiKey = (): string | undefined => {
-  try {
-    const result = execSync(
-      "bunx varlock printenv CLICKUP_API_KEY --path .config/varlock",
-      {
-        encoding: "utf-8",
-        stdio: ["pipe", "pipe", "pipe"],
-      },
-    )
-    return result.trim() || undefined
-  } catch {
-    return undefined
-  }
-}
 
 export const ClickRefPlugin = {
   rules: {
-    "click-ref-exists": async (commit, _when, _opts) => {
-      const apiKey = getApiKey()
+    "click-ref-exists": async (commit, _when, opts) => {
+      const apiKey = opts?.apiKey as string | undefined
       if (!apiKey) {
         return [true, undefined]
       }

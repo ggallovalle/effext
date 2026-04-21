@@ -3,6 +3,8 @@ import { RuleConfigSeverity } from "@commitlint/types"
 
 import { ClickRefPlugin } from "./plugins/ClickRefPlugin.js"
 
+const apiKey = process.env.CLICKUP_API_KEY
+
 const Configuration: UserConfig = {
   extends: ["@commitlint/config-conventional"],
   formatter: "@commitlint/format",
@@ -10,12 +12,10 @@ const Configuration: UserConfig = {
   rules: {
     "click-ref-exists": [
       RuleConfigSeverity.Error,
-      "always", // ok if true
-      // "never", // ok if true
-      { apiKey: "better secret" },
+      "always",
+      { apiKey },
     ],
   },
-  // ...
 }
 
 export default Configuration

@@ -21,7 +21,7 @@ check:
 
 # Lint a commit message file
 lint-commit file:
-    bunx commitlint --edit {{ file }} --config ".config/commitlint/commitlint.config.ts"
+    bunx varlock run --path .config/varlock -- bunx commitlint --edit {{ file }} --config ".config/commitlint/commitlint.config.ts"
 
 # Test tasks
 
