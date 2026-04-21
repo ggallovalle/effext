@@ -10,11 +10,7 @@ const Configuration: UserConfig = {
   formatter: "@commitlint/format",
   plugins: [ClickRefPlugin],
   rules: {
-    "click-ref-exists": [
-      RuleConfigSeverity.Error,
-      "always",
-      { apiKey },
-    ],
+    "click-ref-exists": [RuleConfigSeverity.Error, "always", { apiKey }],
   },
 }
 
