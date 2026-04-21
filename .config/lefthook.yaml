@@ -12,6 +12,8 @@ pre-commit:
           run: just test
         - name: check
           run: just check
+        - name: env-scan
+          run: bunx varlock scan --staged --path .config/varlock
 
 # EXAMPLE USAGE:
 #

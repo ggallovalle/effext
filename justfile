@@ -42,3 +42,13 @@ test-coverage:
 # Setup githooks and more things meant to happen to work on the repo
 contributor-setup:
     bash scripts/contributor/setup.sh
+
+# Env tasks
+
+# Verify .env files are valid
+env-verify:
+    bunx varlock load --path .config/varlock
+
+# Scan for leaked secrets
+env-scan:
+    bunx varlock scan --staged --path .config/varlock

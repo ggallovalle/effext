@@ -8,6 +8,7 @@
     "@commitlint/.+",
     "bunup",
     "@effect/tsgo",
+    "varlock",
     // unused as dev dependency in some projects, fix later
     "@effect/platform-bun"
   ],
